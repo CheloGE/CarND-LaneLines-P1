@@ -48,7 +48,16 @@ My pipeline consisted of 6 main steps:
 
 ![alt text][image6]
 
+The extrapolation step was done by averaging all slopes (avg_m) returned by the lines from the Hough space. Then, we do the same for the intercepts (avg_b) of the lines to finally get a single line described by the following equation:
 
+  ```Y=avg_m*X+avg_b``` 
+  
+These lines create the points required by the ```draw_lines()``` function by getting their coordinates based on the bottom of the frame and the center of the frame "Y" values, as follows:
+
+  ```Y1=bottom_of_the_frame_pixel```
+  ```X1=(Y1-avg_b)/avg_m```
+  ```Y2=center_of_the_frame_pixel```
+  ```X2=(Y2-avg_b)/avg_m```
 
 ### 2. Identify potential shortcomings with your current pipeline
 

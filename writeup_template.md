@@ -53,13 +53,13 @@ My pipeline consisted of 6 main steps:
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+One potential shortcoming would be in the extrapolation state which is being done by dividing the lanes based on the center of the frame. i.e. The vertical center of the image defines when the line lane detected is from the left or from the right. The problem with this approach would be in prominent curves where the center of the screen would not necessarily be defined by the center of the frame.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+* A possible improvement would be to extrapolate lines independently of where they are located in the frame. i.e. lane lines should be extrapolated either if they are a left lane line or a right lane line.                             
 
-Another potential improvement could be to ...
+* Another potential improvement could be to enhance the mask being used so that the algorithm doesn't confuse other lines outside the region of interest.
+
+* Another improvement could be to fine-tune the parameters in the pipeline with an automatic technique such as a grid search.

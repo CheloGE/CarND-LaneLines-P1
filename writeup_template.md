@@ -9,7 +9,7 @@
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/init_image.PNG "Grayscale"
 
 ---
 

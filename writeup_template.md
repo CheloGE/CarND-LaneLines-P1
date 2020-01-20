@@ -44,7 +44,7 @@ My pipeline consisted of 6 main steps:
 
 ![alt text][image5]
 
-6. Extrapolating lane lines to display them on the road frames. To achieve this the function ```draw_lines()``` was used differently. It was used twice, one for the left lane lines and one for the right lane lines. An axample of the final result is shown below:
+6. Extrapolating lane lines to display them on the road frames. To achieve this the function draw_lines() were used differently. In fact, it was used twice, one for the left lane lines and one for the right lane lines. An example of the final result is shown below:
 
 ![alt text][image6]
 

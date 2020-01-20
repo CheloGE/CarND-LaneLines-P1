@@ -20,11 +20,11 @@
 
 ### Reflection
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+### 1. Description of the pipeline implemented.
 
 My pipeline consisted of 6 main steps:
 
-1. Changing image to gray to apply algorithms into a one-channel image
+1. Changing image to gray to apply techniques into a one-channel image rather than a 3-channel image.
 
 ![alt text][image1]
 
@@ -36,15 +36,15 @@ My pipeline consisted of 6 main steps:
 
 ![alt text][image3]
 
-4. Masking the image with a trapezoidal mask.
+4. Masking the image with a trapezoidal mask. The mask was tuned visually, as shown below:
 
 ![alt text][image4]
 
-5. Getting lines through the Hough space
+5. Getting lines through the Hough space.
 
 ![alt text][image5]
 
-6. Extrapolating lane lines to display them on the road frames
+6. Extrapolating lane lines to display them on the road frames. To achieve this the function ```draw_lines()``` was used differently. It was used twice, one for the left lane lines and one for the right lane lines. An axample of the final result is shown below:
 
 ![alt text][image6]
 

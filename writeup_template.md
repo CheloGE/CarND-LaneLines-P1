@@ -20,13 +20,16 @@
 My pipeline consisted of 6 main steps:
 
 1. Changing image to gray to apply algorithms into a one-channel image
+
+![alt text][image1]
+
 2. Gaussian smoothing to remove possible noisy pixels
 3. Applying canny edge detection to find boundaries in the image (1:2 threshold ratio applied)
 4. Masking the image with a trapezoidal mask.
 5. Getting lines through the Hough space
 6. Extrapolating lane lines to display them on the road frames
 
-![alt text][image1]
+
 
 
 ### 2. Identify potential shortcomings with your current pipeline

@@ -54,9 +54,9 @@ The extrapolation step was done by averaging all slopes (avg_m) returned by the 
   
 These lines create the points required by the ```draw_lines()``` function by getting their coordinates based on the bottom of the frame and the center of the frame "Y" values, as follows:
 
-
   ```Y1=bottom_of_the_frame_pixel```
   ```X1=(Y1-avg_b)/avg_m```
+  
   ```Y2=center_of_the_frame_pixel```
   ```X2=(Y2-avg_b)/avg_m```
 

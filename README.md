@@ -25,7 +25,7 @@ For this project, a great writeup should provide a detailed response to the "Ref
 
 3. Suggest possible improvements
 
-This brief description of the solution can be found [here](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
+This brief description of the solution can be found [here](https://github.com/CheloGE/CarND-LaneLines-P1/blob/master/writeup_template.md). 
 
 
 The Project

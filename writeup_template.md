@@ -9,12 +9,12 @@
 
 [//]: # (Image References)
 
-[image1]: ./test_images/init_image.PNG "Grayscale"
-[image2]: ./test_images/gauss_image.PNG "Gauss_smooth"
-[image3]: ./test_images/canny_detector.PNG "canny_detector"
-[image4]: ./test_images/trapezoildal_mask.PNG "trapezoidal_mask"
-[image5]: ./test_images/hough_lines_extrapolated.PNG "hough_lines"
-[image6]: ./test_images/final_image.PNG "extrapolated_lines"
+[image1]: ./examples/init_image.PNG "Grayscale"
+[image2]: ./examples/gauss_image.PNG "Gauss_smooth"
+[image3]: ./examples/canny_detector.PNG "canny_detector"
+[image4]: ./examples/trapezoildal_mask.PNG "trapezoidal_mask"
+[image5]: ./examples/hough_lines_extrapolated.PNG "hough_lines"
+[image6]: ./examples/final_image.PNG "extrapolated_lines"
 
 ---
 

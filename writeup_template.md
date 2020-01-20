@@ -1,9 +1,5 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Finding Lane Lines on the Road**
@@ -21,11 +17,14 @@
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 6 main steps:
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+1. Changing image to gray to apply algorithms into a one-channel image
+2. Gaussian smoothing to remove possible noisy pixels
+3. Applying canny edge detection to find boundaries in the image (1:2 threshold ratio applied)
+4. Masking the image with a trapezoidal mask.
+5. Getting lines through the Hough space
+6. Extrapolating lane lines to display them on the road frames
 
 ![alt text][image1]
 

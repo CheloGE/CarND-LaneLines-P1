@@ -64,13 +64,13 @@ These lines create the points required by the ```draw_lines()``` function by get
   ```Y2=center_of_the_frame_pixel```
   ```X2=(Y2-avg_b)/avg_m```
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Identify potential shortcomings with my current pipeline
 
 
 One potential shortcoming would be in the extrapolation state which is being done by dividing the lanes based on the center of the frame. i.e. The vertical center of the image defines when the line lane detected is from the left or from the right. The problem with this approach would be in prominent curves where the center of the screen would not necessarily be defined by the center of the frame.
 
 
-### 3. Suggest possible improvements to your pipeline
+### 3. Suggest possible improvements to my pipeline
 
 * A possible improvement would be to extrapolate lines independently of where they are located in the frame. i.e. lane lines should be extrapolated either if they are a left lane line or a right lane line.                             
 

@@ -1,49 +1,79 @@
 # **Finding Lane Lines on the Road** 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
+---
+## Summary
+**Finding Lane Lines on the Road**
 
-Overview
+The goal of this project is to make a pipeline that finds lane lines on the road
+
+### Dependencies
+This project requires:
+
+* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
+
+[//]: # (Image References)
+
+[image1]: ./examples/init_image.PNG "Grayscale"
+[image2]: ./examples/gauss_image.PNG "Gauss_smooth"
+[image3]: ./examples/canny_detector.PNG "canny_detector"
+[image4]: ./examples/trapezoildal_mask.PNG "trapezoidal_mask"
+[image5]: ./examples/hough_lines_extrapolated.PNG "hough_lines"
+[image6]: ./examples/final_image.PNG "extrapolated_lines"
+
 ---
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
+### Reflection
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
+### 1. Description of the pipeline implemented.
 
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
+My pipeline consisted of 6 main steps:
 
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
+1. Changing image to gray to apply techniques into a one-channel image rather than a 3-channel image.
+
+![alt text][image1]
+
+2. Gaussian smoothing to remove possible noisy pixels
+
+![alt text][image2]
+
+3. Applying canny edge detection to find boundaries in the image (1:2 threshold ratio applied)
+
+![alt text][image3]
+
+4. Masking the image with a trapezoidal mask. The mask was tuned visually, as shown below:
+
+![alt text][image4]
+
+5. Getting lines through the Hough space.
+
+![alt text][image5]
+
+6. Extrapolating lane lines to display them on the road frames. To achieve this the function draw_lines() were used differently. In fact, it was used twice, one for the left lane lines and one for the right lane lines. An example of the final result is shown below:
+
+![alt text][image6]
+
+The extrapolation step was done by averaging all slopes (avg_m) returned by the lines from the Hough space. Then, we do the same for the intercepts (avg_b) of the lines to finally get a single line described by the following equation:
+
+  ```Y=avg_m*X+avg_b``` 
+  
+These lines create the points required by the ```draw_lines()``` function by getting their coordinates based on the bottom of the frame and the center of the frame "Y" values, as follows:
+
+  ```Y1=bottom_of_the_frame_pixel```
+  ```X1=(Y1-avg_b)/avg_m```
+  
+  ```Y2=center_of_the_frame_pixel```
+  ```X2=(Y2-avg_b)/avg_m```
+
+### 2. Identify potential shortcomings with your current pipeline
 
 
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
-
-1. Describe the pipeline
-
-2. Identify any shortcomings
-
-3. Suggest possible improvements
-
-This brief description of the solution can be found [here](https://github.com/CheloGE/CarND-LaneLines-P1/blob/master/writeup_template.md). 
+One potential shortcoming would be in the extrapolation state which is being done by dividing the lanes based on the center of the frame. i.e. The vertical center of the image defines when the line lane detected is from the left or from the right. The problem with this approach would be in prominent curves where the center of the screen would not necessarily be defined by the center of the frame.
 
 
-The Project
----
+### 3. Suggest possible improvements to your pipeline
 
-## To setup your environment please follow this link: [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) ##
+* A possible improvement would be to extrapolate lines independently of where they are located in the frame. i.e. lane lines should be extrapolated either if they are a left lane line or a right lane line.                             
 
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) if you haven't already.
+* Another potential improvement could be to enhance the mask being used so that the algorithm doesn't confuse other lines outside the region of interest.
 
-**Step 2:** Open the code in a Jupyter Notebook
-
-The project code lays in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
-
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
-
-`> jupyter notebook`
-
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+* Another improvement could be to fine-tune the parameters in the pipeline with an automatic technique such as a grid search.
